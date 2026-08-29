@@ -1,0 +1,168 @@
+<?php 
+include('tbl_conn_files/orders_conn.php'); 
+include('session.php'); 
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<link rel="stylesheet" type="text/css" href="styles/orders_style.css">
+	<!-- below script tags are used for downloading the table as an excel spreadsheet -->
+	<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/gh/linways/table-to-excel@v1.0.4/dist/tableToExcel.js"></script>
+	<title>CTG Limted: Orders</title>
+
+</head>
+<body>
+	<h1>Commodity Trading Group Limited</h1>
+	<div class="logo_section">
+		<a href="index.php"><img src="icons/4_ctg_logo.png" alt="CTG Logo"></a>
+	</div>
+	<h2>CTG Orders</h2>
+	</div>
+	<?php if ($_SESSION['role'] == 'Wholesaler') { ?>
+	<div class="ctg_links">
+	<a href="add_order.php">Create Order</a><br><br>
+	<?php } ?>
+	</div>
+	<div class="table_wrapper">
+	<table id="ctg_purchase_orders" border="1">
+	<thead>
+		<tr>
+		<th>Date Created</th>
+		<th>Order #</th>
+		<th>Customer</th>
+		<th>Item</th>
+		<th>Qty (Kg)</th>
+		<?php if ($_SESSION['role'] == 'System Administrator' or $_SESSION['role'] == 'Warehouse Manager' or $_SESSION['role'] == 'Wholesaler') { ?>
+
+		<th>Sum Price</th>
+		<th>Status</th>
+		<?php } ?>
+		<?php if ($_SESSION['role'] == 'Warehouse Manager' or $_SESSION['role'] == 'Wholesaler') { ?>
+		<th>View Order</th>
+	    <?php } ?>
+		
+		
+	</tr>
+	</thead>
+	<tbody>
+		<?php
+		$query = "SELECT * FROM ctg_purchase_orders";
+		$result = mysqli_query($conn, $query);
+		if ($result->num_rows > 0) {
+			while ($row = $result->fetch_assoc()) {
+		?>
+			<tr>
+				<td><?php echo $row['date_created']; ?></td>
+				<td><?php echo $row['order_no']; ?></td>
+				<td><?php echo $row['customer_name']; ?></td>
+				<td><?php echo $row['item_name']; ?></td>
+				<td><?php echo $row['quantity_kg']; ?></td>
+				<td><?php echo $row['sum_price']; ?></td>
+				<td><?php echo $row['status']; ?></td>			
+				<?php if ($_SESSION['role'] == 'Warehouse Manager' or $_SESSION['role'] == 'Wholesaler') { ?>
+					<td><a href="purchase_order_form.php?viewid=<?php echo $row['id']; ?>">View</a></td>
+				<?php } ?>
+			</tr>
+		<?php	}
+			}
+		?>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="4">
+				<?php 
+				// * summation field
+				$result = mysqli_query($conn, "SELECT count(*) FROM ctg_purchase_orders");
+				while ($rows = mysqli_fetch_array($result)){?>
+				<?php echo "Total Orders: " . $rows['count(*)']; ?> 
+				<?php
+				}
+				?>
+			</td>
+			<td>
+				<?php 
+				// * calculated field
+				$result = mysqli_query($conn, "SELECT sum(quantity_kg) FROM ctg_purchase_orders");
+				while ($rows = mysqli_fetch_array($result)){?>
+				<?php echo $rows['sum(quantity_kg)'] . " Kg"; ?>
+				<?php
+				}
+				?>
+			</td>
+			<td>
+				<?php 
+				// * calculated field
+				$result = mysqli_query($conn, "SELECT sum(sum_price) FROM ctg_purchase_orders");
+				while ($rows = mysqli_fetch_array($result)){?>
+				<?php echo $rows['sum(sum_price)'] . " ZMW"; ?>
+				<?php
+				}
+				?>
+			</td>
+			
+			<?php if ($_SESSION['role'] == 'System Administrator' or$_SESSION['role'] == 'Warehouse Manager' or $_SESSION['role'] == 'Wholesaler') { ?>
+			<td  colspan="5" class="ctg_act">Actions</td>
+			<?php } ?>
+		</tr>
+	</tfoot>
+	</table>
+	</div>
+
+<nav>
+      <div class="links" id="side-nav-links">
+        <img src="icons/s-menu.png" class="sideicon-1" onclick="hideMenu()" alt="Side-Icon-1">
+        <ul>
+
+        	<li><p><?php echo $_SESSION['username']; ?></p></li>
+        	<li><a href="index.php?logout='1'">Logout</a></li>
+          <?php if ($_SESSION['role'] == 'System Administrator' or $_SESSION['role'] == 'Production Manager' or $_SESSION['role'] == 'Warehouse Manager') { ?>
+          <li><a href="users.php">Users</a></li>
+          <?php } ?>
+
+          <li><a href="index.php">Home</a></li>
+          <?php if ($_SESSION['role'] == 'System Administrator' or $_SESSION['role'] == 'Warehouse Manager') { ?>
+          <li><a href="inventory.php">Inventory</a></li>
+          <?php } ?>
+          
+          <?php if ($_SESSION['role'] == 'System Administrator' or $_SESSION['role'] == 'Production Manager' or $_SESSION['role'] == 'Warehouse Manager') { ?>
+          <li><a href="issue_to_production.php">Production</a></li>
+          <?php } ?>
+          <?php if ($_SESSION['role'] == 'System Administrator' or $_SESSION['role'] == 'Production Manager') { ?>
+          <li><a href="soap_costing.php">Soap Costing</a></li>
+          <?php } ?>
+          <?php if ($_SESSION['role'] == 'System Administrator' or $_SESSION['role'] == 'Warehouse Manager') { ?>
+          <li><a href="products.php">Stock</a></li>
+        	<?php } ?>
+        	<?php if ($_SESSION['role'] == 'System Administrator' or $_SESSION['role'] == 'Warehouse Manager' or $_SESSION['role'] == 'Wholesaler') { ?>
+          <li><a href="orders.php">Orders</a></li>
+          <?php } ?>
+        </ul>
+      </div>
+      <img src="icons/s-menu.png" class="sideicon-2" onclick="showMenu()" alt="Side-Icon-2">
+    </nav>
+
+    <script src="js_scripts/script.js"></script>
+		<div class="footer">
+	    <p>CTG Limited</p>  
+	    <p>Copyright&nbsp;&copy; 2024</p>         
+	    <p>All Rights Reserved</p>
+    </div>
+
+    <div class="footer-box">
+    <ul class="footer-social">
+      <li><a href="http://facebook.com"><img src="icons/facebook-icon.png" alt="Facebook"></a></li>
+      <li><a href="https://whatsapp.com/"><img src="icons/whatsapp-icon.png" alt="WhatsApp"></a></li>
+      <li><a href="http://instagram.com"><img src="icons/instagram-icon.png" alt="Instagram"></a></li>
+      <li><a href="https://telegram.org/"><img src="icons/telegram-icon.png" alt="Telegram"></a></li>
+    </ul>    
+    </div>
+
+</body>
+</html>

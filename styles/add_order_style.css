@@ -1,0 +1,145 @@
+.po_header {
+	width: 50%;
+	margin: 30px auto 0px;
+	color: white;
+	background: steelblue;
+	text-align: center;
+	border: 1px solid lightsteelblue;
+	border-bottom: none;
+	border-radius: 10px 10px 0px 0px;
+	padding: 20px;
+}
+
+.p_order {
+	width: 50%;
+	margin: 0px auto;
+	padding: 20px;
+	border: 1px solid lightsteelblue;
+	background: white;
+	border-radius: 0px 0px 10px 10px;
+	overflow-x: auto;
+}
+.input-po{
+	margin: 10px 0px 10px 0px;
+	display: inline-block;
+}
+.input-po label {
+	display: block;
+	text-align: left;
+	margin: 1%;
+}
+.input-po input {
+	height: 30px;
+	width: 80%;
+	padding: 5px 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 1px solid gray;
+}
+@media only screen and (max-width: 768px){
+	.input-po{
+		width: 100%;
+	}
+	.input-po input{
+		width: 80%;
+	}
+}
+.input-kg{
+	padding: 3%;
+	margin: 16%;
+	font-size: 16px;
+	border-radius: 5px;
+	border: none;
+	width: 60%;
+}
+
+#product-select{
+	padding: 3%;
+	margin: 3%;
+	font-size: 16px;
+	border-radius: 5px;
+	border: none;
+	width: 60%;
+	user-select: none;
+	width: 90%;
+}
+#price-result{
+	padding: 3%;
+	margin: 3%;
+	font-size: 16px;
+	border-radius: 5px;
+	border: none;
+	width: 50%;
+	user-select: none;
+}
+#total-price{
+	padding: 3%;
+	margin: 3%;
+	font-size: 16px;
+	border-radius: 5px;
+	border: none;
+	width: 60%;
+	user-select: none;
+}
+@media only screen and (max-width: 768px){
+	#product-select{
+		width: 80%;
+	}
+	.input-kg{
+		width: 60%;
+	}
+}
+.btn-po {
+	padding: 10px;
+	font-size: 15px;
+	color: steelblue;
+	cursor: pointer;
+	background: lightsteelblue;
+	border: none;
+	border-radius: 5px;
+}
+.btn-po:hover {
+	background-color: steelblue;
+	color: white;
+}
+@media only screen and (max-width: 768px){
+	.btn-po{
+		font-size: 14px;
+		padding: 8px;
+	}
+
+	.po_header {
+		font-size: 14px;
+		width: 80%;
+	}
+
+	.p_order {
+		width: 80%;
+		margin-bottom: 64px;
+	}
+}
+table{
+	margin-top: 4%;
+	margin-bottom: 4%;
+	background-color: lightsteelblue;
+	border-color: midnightblue;
+	border-collapse: collapse;
+	font-size: 18px;
+	width: 100%;
+}
+@media only screen and (max-width: 768px){
+	table{
+		width: 100%;
+	}
+}
+thead th{
+	top: 0;
+	position: sticky;
+	padding: 20px;
+	text-align: left;
+}
+
+tr td{
+	text-align: center;
+}
+

@@ -1,0 +1,63 @@
+.material-input label {
+  display: block;
+  text-align: left;
+  margin-top: 2%;
+  margin-left: 1%;
+  margin-bottom: -2%;
+}
+
+.material-input input{
+  height: 30px;
+  width: 93%;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+.material-input.active input{
+  border-radius: 5px;
+}
+
+.material-input .autocom-box{
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  max-height: 280px;
+}
+
+.material-input.active .autocom-box{
+  padding-top: 1%;
+  padding-right: 2%;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.autocom-box li{
+  list-style: none;
+  padding: 8px 12px;
+  display: none;
+  width: 94%;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.material-input.active .autocom-box li{
+  display: block;
+}
+.autocom-box li:hover{
+  background: lightsteelblue;
+  border-radius: 5px;
+}
+
+.material-input .dropdown{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 55px;
+  width: 55px;
+  text-align: center;
+  line-height: 55px;
+  font-size: 20px;
+  color: lightsteelblue;
+  cursor: pointer;

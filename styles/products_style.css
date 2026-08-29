@@ -1,0 +1,132 @@
+	h2{
+	margin-bottom: 2%;
+	padding: 1%;
+	text-align: center;
+	color: white;
+	text-decoration: underline;
+	background-color: grey;
+}
+@media only screen and (max-width: 768px){
+	h2{
+		font-size: 20px;
+	}
+}
+thead tr td #btnExportXlsx{
+	background-color: lightsteelblue;
+	font-size: 20px;
+}
+thead tr td #btnExportXlsx:hover{
+	background-color: steelblue;
+	color: white;
+	text-decoration: underline;
+}
+.table_wrapper{
+	max-height: 480px;	
+	overflow-x: auto;
+	overflow-y: auto;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 16px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: lightsteelblue; 
+}
+::-webkit-scrollbar-corner{
+	background-color: grey;
+}
+table{
+	background-color: steelblue;
+	border-color: white;
+	border-collapse: collapse;
+	font-size: 20px;
+	margin-left: 26%;
+	color: white;
+}
+@media only screen and (max-width: 768px){
+	table{
+		width: 94%;
+		margin-bottom: 2%;
+		margin-left: 2%;
+	}
+	.table_wrapper{
+		max-height: 560px;
+	}
+	.footer{
+		display: none;
+	}
+	.footer-box{
+		display: none;
+	}
+
+}
+.ctg_links a{	
+	text-decoration: none;
+	color: white;
+	font-size: 20px;
+	margin-left: 30%;
+}
+.ctg_links a:hover{
+	text-decoration: underline;
+}
+.ctg_links .btn{
+	font-size: 20px;
+}
+td a{
+	text-decoration: none;
+	color: white;
+	font-size: 18px;
+}
+td a:hover{
+	text-decoration: underline;
+}
+thead th{
+	background-color: midnightblue;
+	top: 0;
+	position: sticky;
+	padding: 20px;
+	text-align: left;
+}
+
+td{
+	text-align: left;
+	padding: 14px;
+}
+@media only screen and (max-width: 768px){
+	thead tr td #btnExportXlsx{
+		font-size: 18px;
+	}
+	table{
+		font-size: 18px;
+		margin-right: 3%;
+	}
+	thead th{
+		padding:18px;
+		margin: 2px;
+	}
+	td{
+		text-align: left;
+	}
+	tr{
+		padding: 2px;
+		margin: 2px;
+	}
+}
+tfoot tr td{
+	background-color: midnightblue;
+	bottom: 0;
+	position: sticky;
+}

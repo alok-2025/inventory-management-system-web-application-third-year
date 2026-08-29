@@ -1,0 +1,18 @@
+let materials = [
+    "Palm Sterine Oil",
+    "PFAD",
+    "Soya Fatty Acid",
+    "Acid Oil",
+    "Soap Stock",
+    "Caustic Soda",
+    "Sodium Silicate",
+    "Dolomite Powder",
+    "Sulphonic Acid",
+    "Titanium Dioxide",
+    "Magnesium Silicate - Talc",
+    "Soda Ash",
+    "Colour Green",
+    "Sunflower Wax",
+    "Perfume",
+    "Water",
+];
