@@ -17,9 +17,9 @@ Web-based Inventory Management System developed for a fictional demo company, CT
 xampp/htdocs/inventory-management-system-web-application-third-year
 
 ### Start XAMPP Server
-Open XAMPP Control Panel and start:
-Apache ✔
-MySQL ✔
+Open XAMPP Control Panel and start:  
+Apache ✔  
+MySQL ✔  
 
 ### Create Database  
 Open browser  
@@ -31,6 +31,7 @@ Create database:  **ctg_inven_db**
 Open the created database ctg_inven_db  
 Click Import  
 Click Choose File  
+
 **Locate the database file at:**  
 xampp/htdocs/inventory-management-system-web-application-third-year/ctg_inven_db.sql  
 Select  **ctg_inven_db.sql**  
