@@ -39,7 +39,7 @@ Click Go
 
 ### Run the Project  
 Open browser and go to:  
-http://localhost/inventory-management-system-web-application-third-year  
+http://localhost/inventory-management-system-web-application-third-year-main  
 
 The system will take you to the CTG IMS login page.
 
